@@ -1,0 +1,36 @@
+<div class="containe relative">
+    <div class="screen rounded-lg !overflow-hidden !pb-4 ">
+        <div class="screen__content  ">
+            <form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input 
+                        formControlName="email" 
+                        type="text" 
+                        class="login__input" 
+                        placeholder="Email">
+                    <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                        email is
+                        required</p>
+
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input 
+                        formControlName="password" 
+                        type="password" 
+                        class="login__input" 
+                        placeholder="Password">
+                    <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                        class="error-message">Password is required</p>
+                </div>
+                <button class="button login__submit">
+                    <span class="button__text">Log In Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+            <h1 class="w-full text-center text-[#2aff2a]">{{message}}</h1>
+            <h1 class="w-full text-center text-[red]">{{errormessage}}</h1>
+        </div>
+    </div>
+</div>
