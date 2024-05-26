@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   confirmBoolean !:boolean
   errorBoolean !:boolean
   successBoolean !:boolean
+  notificationBoolean !: boolean
 
 
   constructor ( private commonService:CommonServiceService) {}
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit{
 
       this.commonService.successBooleanSubject.subscribe((val)=>{
         this.successBoolean = val
+      })
+
+      this.commonService.notificationBooleanSubject.subscribe((val)=>{
+        this.notificationBoolean = val
       })
   }
 }

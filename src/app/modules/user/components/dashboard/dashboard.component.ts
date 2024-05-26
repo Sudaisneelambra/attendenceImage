@@ -1,84 +1,93 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocketService } from '../../services/socket.service';
+import { CommonServiceService } from 'src/app/services/common-service.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-export class UserDashboardComponent {
-  
+export class UserDashboardComponent implements OnInit {
+  one = true;
 
-  one=true
+  constructor(
+    private router: Router,
+    private socketService: SocketService,
+    private commonService: CommonServiceService
+  ) {}
 
-  constructor(private router:Router){}
-
-boolean(){
-  if(this.one){
-    this.one=false
-  } else {
-    this.one=true
+  ngOnInit(): void {
+    const token = this.commonService.tockendecode()
+    const emplyeeName = token.name
+    this.socketService.connectWithSocket(emplyeeName);
   }
-}
 
-employeeAdd(){
-  this.one=true
-  this.router.navigate(['/admin/EmployeeAdd'])
-  
-}
+  boolean() {
+    if (this.one) {
+      this.one = false;
+    } else {
+      this.one = true;
+    }
+  }
 
-gotoagency(){
-  this.one=true
-  // this.router.navigate(['/admin/agency-list'])
-}
+  employeeAdd() {
+    this.one = true;
+    this.router.navigate(['/admin/EmployeeAdd']);
+  }
 
-gotoBlockedAgency(){
-  this.one=true
-  // this.router.navigate(['/admin/blocked-agency'])
-}
+  gotoagency() {
+    this.one = true;
+    // this.router.navigate(['/admin/agency-list'])
+  }
 
-gotoblockedusers(){
-  this.one=true
-  // this.router.navigate(['/admin/blocked-user'])
-}
-gotopackage(){
-  // this.router.navigate(['/admin/packages'])
-}
+  gotoBlockedAgency() {
+    this.one = true;
+    // this.router.navigate(['/admin/blocked-agency'])
+  }
 
-gotoplace(){
-  // this.router.navigate(['/admin/places'])
-}
-gotoguides(){
-  // this.router.navigate(['/admin/guides'])
-}
-gotobookingdetails(){
-  // this.router.navigate(['/admin/bookingdetails'])
-}
+  gotoblockedusers() {
+    this.one = true;
+    // this.router.navigate(['/admin/blocked-user'])
+  }
+  gotopackage() {
+    // this.router.navigate(['/admin/packages'])
+  }
 
-gotoagencyreview(){
-  // this.router.navigate(['/admin/agencyreview'])
-}
-gotomessage(){
-  // this.router.navigate(['/admin/chatlist'])
-}
+  gotoplace() {
+    // this.router.navigate(['/admin/places'])
+  }
+  gotoguides() {
+    // this.router.navigate(['/admin/guides'])
+  }
+  gotobookingdetails() {
+    // this.router.navigate(['/admin/bookingdetails'])
+  }
 
-gotopagereview(){
-  // this.router.navigate(['/admin/pagereview'])
-}
+  gotoagencyreview() {
+    // this.router.navigate(['/admin/agencyreview'])
+  }
+  gotomessage() {
+    // this.router.navigate(['/admin/chatlist'])
+  }
 
-gotohome(){
-  // this.router.navigate(['/admin'])
-}
+  gotopagereview() {
+    // this.router.navigate(['/admin/pagereview'])
+  }
 
-logout(){
-  const confirm = window.confirm('are you sure to logout')
-//  if(confirm){
-  // this.adminmain.agencylogout()
-//  }
-}
+  gotohome() {
+    // this.router.navigate(['/admin'])
+  }
 
-requests(){
-  // this.one=true
-  // this.router.navigate(['/admin/requests'])
-}
+  logout() {
+    const confirm = window.confirm('are you sure to logout');
+    //  if(confirm){
+    // this.adminmain.agencylogout()
+    //  }
+  }
+
+  requests() {
+    // this.one=true
+    // this.router.navigate(['/admin/requests'])
+  }
 }

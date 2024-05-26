@@ -10,6 +10,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ErrorComponent } from './components/error/error.component';
 import { SuccessComponent } from './components/success/success.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SuccessComponent } from './components/success/success.component';
     LoadingComponent,
     ConfirmComponent,
     ErrorComponent,
-    SuccessComponent
+    SuccessComponent,
+    NotificationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+@media(max-width:450px){
+    .noti-box{
+        width: 90%;
+    }
+}
+.noti-box{
+    border-radius: 20px 0 20px 0;
+    overflow: hidden;
+    box-shadow: 0px -1px 20px 0px black;
+}

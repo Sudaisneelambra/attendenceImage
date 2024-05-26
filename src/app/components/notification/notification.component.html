@@ -1,0 +1,10 @@
+<div class="w-full absolute  top-14 flex justify-center">
+    <div class="noti-box w-[400px]  border-2 border-red-500  z-[100] bg-[#575151]">
+        <div class="flex justify-between items-center px-4 bg-red-600">
+            <h1 class=" text-white font-bold text-[20px] ">Attention</h1><h1><i class="fa-solid fa-xmark text-[20px]" (click)="cancelNotification()"></i></h1>
+        </div>
+        <p class="p-2 text-center text-[white]">Dear {{notificationMessage.employeeName}} , {{notificationMessage?.message}}</p>
+        <p class="p-2 text-center text-[white] font-bold" *ngIf="notificationMessage && notificationMessage?.Time"> Time : {{notificationMessage?.Time}}</p>
+        <h1 class="font-bold text-center text-[#54ed54] p-3">Thank You 🙏</h1>
+    </div>
+</div>

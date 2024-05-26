@@ -11,12 +11,16 @@ export class CommonServiceService {
   confirmBooleanSubject= new BehaviorSubject<boolean>(false)
   successBooleanSubject= new BehaviorSubject<boolean>(false)
   errorBooleanSubject= new BehaviorSubject<boolean>(false)
+  notificationBooleanSubject= new BehaviorSubject<boolean>(false)
+
 
 
   confirmMessage= new BehaviorSubject<string>('')
   data= new BehaviorSubject<object>({})
   successMessage= new BehaviorSubject<string>('')
   errorMessage= new BehaviorSubject<string>('')
+  notificationMessage= new BehaviorSubject<{}>({})
+
 
 
   tockendecode() {
