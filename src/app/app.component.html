@@ -1,1 +1,5 @@
 <router-outlet></router-outlet>
+<app-confirm *ngIf="confirmBoolean"></app-confirm>
+<app-error *ngIf="errorBoolean"></app-error>
+<app-success *ngIf="successBoolean"></app-success>
+<app-loading *ngIf="loadingBoolean"></app-loading>

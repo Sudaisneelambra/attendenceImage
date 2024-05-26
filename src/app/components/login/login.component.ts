@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonServiceService } from 'src/app/services/common-service.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +11,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  message!:string
-  errormessage!:string
+  message :string | undefined
+  errorMessage :string | undefined
   loginForm!: FormGroup;
-  loginButton: Boolean = false;
+  submitted: boolean | undefined
 
   constructor(
     private formBuilder: FormBuilder,
-    // private commonService: CommonService,
+    private loginService: LoginServiceService,
+    private commonService:CommonServiceService,
     private router:Router
   ) {}
   
@@ -28,42 +31,45 @@ export class LoginComponent implements OnInit {
   // login form
   initializeForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+          email: ['', Validators.required],
+          password: ['', Validators.required],
+          userType: ['',Validators.required]
     });
   }
 
   // login
   login() {
-    // this.errormessage=''
-    // this.message=''
-    // this.loginButton = true;
-    // if (this.loginForm.valid) {
-    //   this.commonService.loadingbooleanValue.next(true)
-    //   this.commonService.login(this.loginForm.value).subscribe({
-    //     next: (res) => {
-    //       this.commonService.loadingbooleanValue.next(false)
-    //       if(res.success) {
-    //         this.message=res.message
-    //         localStorage.setItem('token',res.token)
-    //         const token =this.commonService.tockendecode()
-    //         if(token.type){
-    //           this.router.navigate(['/admin'])
-    //         } else {
-    //           this.router.navigate(['/user'])
-    //         }
-    //       } else {
-    //         this.errormessage=res.message
-    //       }
-    //     },
-    //     error: (err) => {
-    //       this.commonService.loadingbooleanValue.next(false)
-    //       this.errormessage=err.error.message
-    //       console.log(err);
-    //     },
-    //   });
-    // } else {
-    //   alert('fill the fields or fill in correct formate');
-    // }
+
+    this.submitted = true
+    this.errorMessage = ''
+    this.message = ''
+    
+    if (this.loginForm.valid) {
+        this.commonService.loadingSubject.next(true)
+            this.loginService.userLogin(this.loginForm.value).subscribe({
+                 next: (res) => {
+                 this.commonService.loadingSubject.next(false)
+                    if(res.success) {
+                        this.message = res.message
+                        localStorage.setItem('token',res.token)
+                        const token =this.commonService.tockendecode()
+                            if(token.type){
+                            this.router.navigate(['/admin'])
+                            } else {
+                                this.router.navigate(['/user'])
+                            }
+                    } else {
+                      this.errorMessage=res.message
+                    }
+        },
+        error: (err) => {
+            this.commonService.loadingSubject.next(false)
+            this.errorMessage=err.error.message
+            console.log(err);
+        },
+      });
+    } else {
+            alert('fill the fields or fill in correct formate');
+    }
   }
 }

@@ -114,3 +114,7 @@
 	margin-left: auto;
 	color: #7B836D;
 }
+
+.error-message{
+    color: red;
+}

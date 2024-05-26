@@ -1,0 +1,42 @@
+<form [formGroup]="addEmplyeeForm" (ngSubmit)="onSubmit()" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Add Emplyee</h2>
+
+    <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-bold mb-2">Username</label>
+        <input type="text" id="username" formControlName="username"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter username" />
+        <div *ngIf="addEmplyeeForm.get('username')?.invalid && addEmplyeeForm.get('username')?.touched"
+            class="text-red-500 text-sm mt-1">
+            Username is required
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label for="phoneNumber" class="block text-gray-700 font-bold mb-2">Phone Number</label>
+        <input type="tel" id="phoneNumber" formControlName="phoneNumber"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter phone number" />
+        <div *ngIf="addEmplyeeForm.get('phoneNumber')?.invalid && addEmplyeeForm.get('phoneNumber')?.touched"
+            class="text-red-500 text-sm mt-1">
+            Phone number is required
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+        <input type="email" id="email" formControlName="email"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter email" />
+        <div *ngIf="addEmplyeeForm.get('email')?.invalid && addEmplyeeForm.get('email')?.touched"
+            class="text-red-500 text-sm mt-1">
+            Email is required and must be valid
+        </div>
+    </div>
+
+    <button type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+        [disabled]="addEmplyeeForm.invalid">
+        Add Emplyee
+    </button>
+</form>

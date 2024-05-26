@@ -1,0 +1,103 @@
+
+
+<header class="">
+    <div class="logosec cursor-pointer" >
+      <div class="logo" (click)="gotohome()">IMAGE DIGITAL</div>
+      <div class="flex gap-2">
+        <div class="sin w-[45px] h-[45px] bg-white rounded-lg hidden">
+          <img 
+            src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+            class="icn menuicn"
+            id="menuicn"
+            alt="menu-icon"
+            (click)="boolean()"
+            />
+        </div>
+      </div>
+    </div>
+</header>
+  
+<div class="main-container ">
+    <div class="sidebar w-[35%]">
+      <div class="navcontainer " [hidden]="one">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            <div class="option2 nav-option" (click)="employeeAdd()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/userpng.png"
+                    class="nav-img"
+                    alt="Employee"
+                    />
+                </div>
+                <h3>Employees</h3>
+            </div>
+  
+            <div class="nav-option option3" (click)="gotoagency()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/employee.png"
+                    class="nav-img"
+                    alt="Add"
+                    />
+                </div>
+                <h3>Add Emplyee</h3>
+            </div>
+  
+            <div class="nav-option option4" (click)="gotoblockedusers()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/exit.png"
+                    class="nav-img"
+                    alt="leave"
+                    />
+                </div>
+                 <h3>Leave Request</h3>
+            </div>
+  
+            <div class="nav-option option5" (click)="gotoBlockedAgency()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/attendance.png"
+                    class="nav-img"
+                    alt="attendence"
+                    />
+                </div>
+                <h3>Attendence</h3>
+            </div>
+  
+            <!-- <div class="nav-option option6" (click)="requests()">
+              <div
+                class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg"
+              >
+                <img
+                  src="/assets/images/requists.webp"
+                  class="nav-img"
+                  alt="report"
+                />
+              </div>
+              <h3>Requests</h3>
+            </div> -->
+  
+            <div class="nav-option logout" (click)="logout()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/turn-off.png"
+                    class="nav-img"
+                    alt="logout"
+                    />
+                </div>
+                <h3>Logout</h3>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="thazhe max-h-[600px] mb-10">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

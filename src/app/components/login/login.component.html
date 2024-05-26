@@ -2,6 +2,7 @@
     <div class="screen rounded-lg !overflow-hidden !pb-4 ">
         <div class="screen__content  ">
             <form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+
                 <div class="login__field">
                     <i class="login__icon fas fa-user"></i>
                     <input 
@@ -14,6 +15,7 @@
                         required</p>
 
                 </div>
+
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>
                     <input 
@@ -24,13 +26,35 @@
                     <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
                         class="error-message">Password is required</p>
                 </div>
+
+                <div class="login__field">
+                    <label class="">
+                        <input 
+                            type="radio" 
+                            formControlName="userType" 
+                            value="user" 
+                            class="radio__input">
+                        User
+                    </label>
+                    <label>
+                        <input 
+                            type="radio" 
+                            formControlName="userType" 
+                            value="admin" 
+                            class="radio__input">
+                        Admin
+                    </label>
+                    <p *ngIf="submitted && loginForm.get('userType')?.invalid"
+                        class="error-message">Please select a user type</p>
+                </div>
+
                 <button class="button login__submit">
                     <span class="button__text">Log In Now</span>
                     <i class="button__icon fas fa-chevron-right"></i>
                 </button>
             </form>
             <h1 class="w-full text-center text-[#2aff2a]">{{message}}</h1>
-            <h1 class="w-full text-center text-[red]">{{errormessage}}</h1>
+            <h1 class="w-full text-center text-[red]">{{errorMessage}}</h1>
         </div>
     </div>
 </div>
