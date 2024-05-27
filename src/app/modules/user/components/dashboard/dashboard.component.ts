@@ -31,52 +31,23 @@ export class UserDashboardComponent implements OnInit {
     }
   }
 
-  employeeAdd() {
+  goToCheckIn() {
     this.one = true;
-    this.router.navigate(['/admin/EmployeeAdd']);
+    this.router.navigate(['/employee']);
   }
 
-  gotoagency() {
+  goToLeaveAppy() {
     this.one = true;
-    // this.router.navigate(['/admin/agency-list'])
+    this.router.navigate(['/employee/leave-Application'])
   }
 
-  gotoBlockedAgency() {
+  attendence() {
     this.one = true;
     // this.router.navigate(['/admin/blocked-agency'])
   }
 
-  gotoblockedusers() {
-    this.one = true;
-    // this.router.navigate(['/admin/blocked-user'])
-  }
-  gotopackage() {
-    // this.router.navigate(['/admin/packages'])
-  }
-
-  gotoplace() {
-    // this.router.navigate(['/admin/places'])
-  }
-  gotoguides() {
-    // this.router.navigate(['/admin/guides'])
-  }
-  gotobookingdetails() {
-    // this.router.navigate(['/admin/bookingdetails'])
-  }
-
-  gotoagencyreview() {
-    // this.router.navigate(['/admin/agencyreview'])
-  }
-  gotomessage() {
-    // this.router.navigate(['/admin/chatlist'])
-  }
-
-  gotopagereview() {
-    // this.router.navigate(['/admin/pagereview'])
-  }
-
   gotohome() {
-    // this.router.navigate(['/admin'])
+    this.router.navigate(['/employee'])
   }
 
   logout() {

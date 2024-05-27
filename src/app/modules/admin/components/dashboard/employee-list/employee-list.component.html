@@ -1,0 +1,13 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let user of userList" class="relative bg-white rounded-md border-2 shadow-md p-4">
+        <p class="text-xl font-bold text-gray-800">{{ user.username }}</p>
+        <p class="text-sm text-gray-600">{{ user.email }}</p>
+        <p class="text-sm text-gray-600">{{ user.phoneNumber }}</p>
+        <button class="absolute top-8 right-2 text-white px-4 py-2 rounded-md"
+            [ngClass]="{'bg-red-500': !user.blockStatus, 'bg-green-500': user.blockStatus}"
+            (click)="changeBlockStatus(user._id)">
+            <span *ngIf="!user.blockStatus">Block</span>
+            <span *ngIf="user.blockStatus">Unblock</span>
+        </button>
+    </div>
+</div>

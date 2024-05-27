@@ -16,6 +16,14 @@ export class AdminServiceService {
     return this.http.post(`${this.api}/admin/addEmplyee`, emplyeeData)
   }
 
+  showAllEmployees():Observable<any>{
+    return this.http.get(`${this.api}/admin/showEmployees`)
+  }
+
+  blockAndUnblockEmployee(userId:any):Observable<any>{
+    return this.http.patch(`${this.api}/admin/changeStatus`, {userId})
+  }
+
 
 }
 

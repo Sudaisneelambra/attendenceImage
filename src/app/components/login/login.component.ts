@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                             if(token.type){
                             this.router.navigate(['/admin'])
                             } else {
-                                this.router.navigate(['/user'])
+                                this.router.navigate(['/employee'])
                             }
                     } else {
                       this.errorMessage=res.message

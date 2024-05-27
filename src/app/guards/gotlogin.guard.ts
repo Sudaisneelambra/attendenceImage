@@ -10,7 +10,7 @@ export const gotloginGuard: CanActivateFn = (route, state) => {
     return true
 
   } else if (tocken && !tocken?.type ) {
-    inject(Router).navigate(['user'])
+    inject(Router).navigate(['employee'])
 
   } else if (tocken && tocken?.type){
     inject(Router).navigate(['admin'])

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonServiceService } from 'src/app/services/common-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ export class AdminDashboardComponent {
 
   one=true
 
-  constructor(private router:Router){}
+  constructor(private router:Router,private commonService:CommonServiceService){}
 
 boolean(){
   if(this.one){
@@ -26,54 +27,36 @@ employeeAdd(){
   
 }
 
-gotoagency(){
-  this.one=true
-  // this.router.navigate(['/admin/agency-list'])
+goToCheckIn(){
+  this.one= true
+  this.router.navigate(['/admin'])
+
 }
 
-gotoBlockedAgency(){
+getAllEmployees(){
+  this.one=true
+  this.router.navigate(['/admin/all-Employees'])
+}
+
+leaveRequest(){
   this.one=true
   // this.router.navigate(['/admin/blocked-agency'])
 }
 
-gotoblockedusers(){
+attendence(){
   this.one=true
   // this.router.navigate(['/admin/blocked-user'])
 }
-gotopackage(){
-  // this.router.navigate(['/admin/packages'])
-}
-
-gotoplace(){
-  // this.router.navigate(['/admin/places'])
-}
-gotoguides(){
-  // this.router.navigate(['/admin/guides'])
-}
-gotobookingdetails(){
-  // this.router.navigate(['/admin/bookingdetails'])
-}
-
-gotoagencyreview(){
-  // this.router.navigate(['/admin/agencyreview'])
-}
-gotomessage(){
-  // this.router.navigate(['/admin/chatlist'])
-}
-
-gotopagereview(){
-  // this.router.navigate(['/admin/pagereview'])
-}
 
 gotohome(){
-  // this.router.navigate(['/admin'])
+  this.router.navigate(['/admin'])
 }
 
 logout(){
   const confirm = window.confirm('are you sure to logout')
-//  if(confirm){
-  // this.adminmain.agencylogout()
-//  }
+ if(confirm){
+  this.commonService.logOut()
+ }
 }
 
 requests(){

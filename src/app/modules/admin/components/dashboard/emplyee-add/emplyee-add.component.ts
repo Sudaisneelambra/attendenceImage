@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 import { AdminServiceService } from '../../../services/admin-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-emplyee-add',
@@ -15,7 +16,8 @@ export class EmplyeeAddComponent {
   constructor(
     private formBuilder: FormBuilder,
     private adminService: AdminServiceService,
-    private commonService: CommonServiceService
+    private commonService: CommonServiceService,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -52,6 +54,7 @@ export class EmplyeeAddComponent {
                       this.commonService.confirmMessage.next('')
                       this.addEmplyeeForm.reset();
                       this.commonService.loadingSubject.next(false);
+                      this.router.navigate(['/admin'])
                     },
                     error: (err) => {
                       console.log(err);

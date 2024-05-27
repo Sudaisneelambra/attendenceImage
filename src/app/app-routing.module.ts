@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { gotloginGuard } from './guards/gotlogin.guard';
 import { goadminhomeGuard } from './guards/goadminhome.guard';
-import { gouserhomeGuard } from './guards/gouserhome.guard';
+import { goemployeehomeGuard } from './guards/goemployeehome.guard';
 
 const routes: Routes = [
   { path: '', canActivate:[gotloginGuard], component: LoginComponent },
@@ -14,8 +14,8 @@ const routes: Routes = [
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: 'user',
-    canActivate:[gouserhomeGuard],
+    path: 'employee',
+    canActivate:[goemployeehomeGuard],
     loadChildren: () =>
       import('./modules/user/employee.module').then((m) => m.UserModule),
   },

@@ -1,1 +1,39 @@
-<p>leave-application works!</p>
+<h1 class="text-center text-[30px] mt-3 font-bold">Leave Application</h1>
+<div class="form-container">
+    <form [formGroup]="leaveRequestForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="employeeName">Employee Name:</label>
+        <input id="employeeName" formControlName="employeeName" type="text" class="form-control" />
+        <div *ngIf="leaveRequestForm.controls['employeeName'].invalid && leaveRequestForm.controls['employeeName'].touched">
+          Employee ID is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" formControlName="startDate" type="date" class="form-control" />
+        <div *ngIf="leaveRequestForm.controls['startDate'].invalid && leaveRequestForm.controls['startDate'].touched">
+          Start Date is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input id="endDate" formControlName="endDate" type="date" class="form-control" />
+        <div *ngIf="leaveRequestForm.controls['endDate'].invalid && leaveRequestForm.controls['endDate'].touched">
+          End Date is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="reason">Reason:</label>
+        <textarea id="reason" formControlName="reason" class="form-control"></textarea>
+        <div *ngIf="leaveRequestForm.controls['reason'].invalid && leaveRequestForm.controls['reason'].touched">
+          Reason is required
+        </div>
+      </div>
+  
+      <button type="submit" class="py-2 px-4 bg-[#251b5c] rounded-md text-white font-bold" [disabled]="leaveRequestForm.invalid">Submit</button>
+    </form>
+  </div>
+  

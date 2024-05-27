@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './components/dashboard/dashboard.compon
 import { AdminRoutingModule } from './routes/admin.routes';
 import { EmplyeeAddComponent } from './components/dashboard/emplyee-add/emplyee-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeListComponent } from './components/dashboard/employee-list/employee-list.component';
 
 
 
@@ -11,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AdminDashboardComponent,
     EmplyeeAddComponent,
+    EmployeeListComponent,
   ],
   imports: [
     CommonModule,

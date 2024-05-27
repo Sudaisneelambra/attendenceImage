@@ -21,7 +21,7 @@
         <nav class="nav">
           <div class="nav-upper-options">
 
-            <div class="nav-option option4" (click)="gotoblockedusers()">
+            <div class="nav-option option4" (click)="goToLeaveAppy()">
                 <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
                     <img
                     src="/assets/images/exit.png"
@@ -31,8 +31,19 @@
                 </div>
                  <h3>Apply Leave</h3>
             </div>
+
+            <div class="nav-option option4" (click)="goToCheckIn()">
+                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
+                    <img
+                    src="/assets/images/check-in.png"
+                    class="nav-img"
+                    alt="chechIn"
+                    />
+                </div>
+                 <h3>Check In / Out</h3>
+            </div>
   
-            <div class="nav-option option5" (click)="gotoBlockedAgency()">
+            <div class="nav-option option5" (click)="attendence()">
                 <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
                     <img
                     src="/assets/images/attendance.png"

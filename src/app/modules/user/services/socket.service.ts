@@ -20,7 +20,15 @@ export class SocketService {
           },
         });
 
-        this.socket.on('notification', (notification: any) => {
+        this.socket.on('checkInnotification', (notification: any) => {
+          console.log('Notification received: ', notification);
+          this.commonService.notificationBooleanSubject.next(true)
+          notification.employeeName = emplyee
+          this.commonService.notificationMessage.next(notification)
+        });
+
+
+        this.socket.on('checkOutnotification', (notification: any) => {
           console.log('Notification received: ', notification);
           this.commonService.notificationBooleanSubject.next(true)
           notification.employeeName = emplyee
