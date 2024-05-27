@@ -6,22 +6,16 @@ import { environment } from 'src/environment/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminServiceService {
+export class EmployeeServiceService {
 
   constructor(private http:HttpClient) { }
 
   api = environment.api
 
-  addEmployee(emplyeeData:addEmployeeData):Observable<any>{
-    return this.http.post(`${this.api}/admin/addEmplyee`, emplyeeData)
+  checkIn(data:any):Observable<any>{
+    console.log(data);
+    return this.http.post(`${this.api}/employee/checkIn`,data)
   }
+  
 
-
-}
-
-
-interface addEmployeeData {
-  username ?: string;
-  phoneNumber ?: number;
-  email ?: string;
 }

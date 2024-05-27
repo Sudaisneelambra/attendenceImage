@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'user',
     canActivate:[gouserhomeGuard],
     loadChildren: () =>
-      import('./modules/user/user.module').then((m) => m.UserModule),
+      import('./modules/user/employee.module').then((m) => m.UserModule),
   },
 ];
 

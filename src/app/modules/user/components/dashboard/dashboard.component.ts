@@ -81,9 +81,9 @@ export class UserDashboardComponent implements OnInit {
 
   logout() {
     const confirm = window.confirm('are you sure to logout');
-    //  if(confirm){
-    // this.adminmain.agencylogout()
-    //  }
+     if(confirm){
+        this.commonService.logOut()
+     }
   }
 
   requests() {

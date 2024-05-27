@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { io } from "socket.io-client";
 import { CommonServiceService } from 'src/app/services/common-service.service';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 
 
 @Injectable({

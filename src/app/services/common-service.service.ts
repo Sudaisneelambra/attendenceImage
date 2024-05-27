@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CommonServiceService {
 
-  constructor() { }
+  constructor( private router:Router) { }
+
   loadingSubject= new BehaviorSubject<boolean>(false)
   confirmBooleanSubject= new BehaviorSubject<boolean>(false)
   successBooleanSubject= new BehaviorSubject<boolean>(false)
@@ -33,6 +35,11 @@ export class CommonServiceService {
     const base64 = base64Url.replace('-', '+').replace('_', '/');
 
     return JSON.parse(window.atob(base64));
+  }
+
+  logOut(){
+    localStorage.clear()
+    this.router.navigate(['/'])
   }
 
 }

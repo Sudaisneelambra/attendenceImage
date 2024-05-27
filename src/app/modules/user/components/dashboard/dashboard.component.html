@@ -16,32 +16,11 @@
 </header>
   
 <div class="main-container ">
-    <div class="sidebar w-[35%] fixed">
+    <div class="sidebar w-[35%] ">
       <div class="navcontainer " [hidden]="one">
         <nav class="nav">
           <div class="nav-upper-options">
-            <div class="option2 nav-option" (click)="employeeAdd()">
-                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
-                    <img
-                    src="/assets/images/userpng.png"
-                    class="nav-img"
-                    alt="Employee"
-                    />
-                </div>
-                <h3>Employees</h3>
-            </div>
-  
-            <div class="nav-option option3" (click)="gotoagency()">
-                <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
-                    <img
-                    src="/assets/images/employee.png"
-                    class="nav-img"
-                    alt="Add"
-                    />
-                </div>
-                <h3>Add Emplyee</h3>
-            </div>
-  
+
             <div class="nav-option option4" (click)="gotoblockedusers()">
                 <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
                     <img
@@ -50,7 +29,7 @@
                     alt="leave"
                     />
                 </div>
-                 <h3>Leave Request</h3>
+                 <h3>Apply Leave</h3>
             </div>
   
             <div class="nav-option option5" (click)="gotoBlockedAgency()">
@@ -63,20 +42,7 @@
                 </div>
                 <h3>Attendence</h3>
             </div>
-  
-            <!-- <div class="nav-option option6" (click)="requests()">
-              <div
-                class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg"
-              >
-                <img
-                  src="/assets/images/requists.webp"
-                  class="nav-img"
-                  alt="report"
-                />
-              </div>
-              <h3>Requests</h3>
-            </div> -->
-  
+
             <div class="nav-option logout" (click)="logout()">
                 <div class="w-[45px] h-[45px] grid place-items-center bg-white rounded-lg">
                     <img
@@ -87,6 +53,7 @@
                 </div>
                 <h3>Logout</h3>
             </div>
+
           </div>
         </nav>
       </div>
