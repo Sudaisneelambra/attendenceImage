@@ -11,6 +11,7 @@ export class AdminServiceService {
   constructor(private http:HttpClient) { }
 
   api = environment.api
+  socketApi = environment.socketApi
 
   addEmployee(emplyeeData:addEmployeeData):Observable<any>{
     return this.http.post(`${this.api}/admin/addEmplyee`, emplyeeData)
@@ -24,6 +25,18 @@ export class AdminServiceService {
     return this.http.patch(`${this.api}/admin/changeStatus`, {userId})
   }
 
+  showRequest():Observable<any>{;
+    
+    return this.http.get(`${this.api}/admin/showRequest`)
+  }
+
+  leaveApprove(leaveId:any):Observable<any>{
+    return this.http.patch(`${this.socketApi}/admin/leaveApproval`, {leaveId})
+  }
+
+  getSingleEmployeeDetail(id:any):Observable<any>{
+    return this.http.get(`${this.api}/admin/getSingleEmployeeDetail/${id}`)
+  }
 
 }
 

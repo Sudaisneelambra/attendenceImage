@@ -13,7 +13,6 @@ export class EmployeeServiceService {
   api = environment.api
 
   checkIn(data:any):Observable<any>{
-    console.log(data);
     return this.http.post(`${this.api}/employee/checkIn`,data)
   }
 
@@ -27,7 +26,6 @@ export class EmployeeServiceService {
   }
 
   takeBreak(data:any):Observable<any>{
-    console.log(data);
     return this.http.post(`${this.api}/employee/takeBreak`,data)
   }
 
@@ -43,6 +41,10 @@ export class EmployeeServiceService {
   requestForLeave(data:any):Observable<any>{
     return this.http.post(`${this.api}/employee/leaveRequest`,data)
 
+  }
+
+  getAttendance():Observable<any> {
+    return this.http.get(`${this.api}/employee/getAttendance`)
   }
 
 }

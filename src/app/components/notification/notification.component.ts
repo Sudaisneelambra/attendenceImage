@@ -21,6 +21,7 @@ export class NotificationComponent implements OnInit{
     })
   }
 
+  // cancell notification
   cancelNotification(){
     this.commonService.notificationBooleanSubject.next(false)
     this.commonService.notificationMessage.next({})

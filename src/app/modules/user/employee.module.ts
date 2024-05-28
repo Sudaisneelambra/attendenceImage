@@ -8,6 +8,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { ReactiveFormsModule } from '@angular/forms';
+import { AttendenceComponent } from './components/dashboard/attendence/attendence.component';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     UserDashboardComponent,
     EmployeeHomeComponent,
-    LeaveApplicationComponent
+    LeaveApplicationComponent,
+    AttendenceComponent
   ],
   imports: [
     CommonModule,

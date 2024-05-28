@@ -13,11 +13,14 @@ import { SuccessComponent } from './components/success/success.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CommonInterceptor } from './common.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AttendenceCallenderComponent } from './components/attendence-callender/attendence-callender.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    AttendenceCallenderComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ErrorComponent,
     SuccessComponent,
     NotificationComponent,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FullCalendarModule
   ],
   providers: [
     {

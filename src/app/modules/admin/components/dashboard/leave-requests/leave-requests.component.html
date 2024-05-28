@@ -1,0 +1,16 @@
+
+<h1 class="mt-4 text-[23px] font-black">Leave Requests</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4">
+    <div *ngFor="let leave of requestList" class="relative bg-white rounded-md border-2 shadow-md p-4">
+        <p class="text-xl font-bold text-gray-800">{{ leave.leaveName }}</p>
+        <p class="text-sm text-gray-600">Leave Start : {{ leave.startDate }}</p>
+        <p class="text-sm text-gray-600">Leave End : {{ leave.endDate }}</p>
+        <p class="text-sm text-gray-600"> Reason : <span class="text-[red]">{{ leave.reason}}</span></p>
+        <button class="absolute top-8 right-2 text-white px-4 py-2 rounded-md"
+            [ngClass]="{'bg-red-500': !leave.approved, 'bg-green-500': leave.approved}"
+            (click)="approveTheLeave(leave._id)">
+            <span *ngIf="!leave.approved">Approve</span>
+            <span *ngIf="leave.approved">Approved</span>
+        </button>
+    </div>
+</div>

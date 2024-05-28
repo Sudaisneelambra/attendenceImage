@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 import { AdminServiceService } from '../../../services/admin-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,7 +12,8 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(
     private adminService: AdminServiceService,
-    private commonService: CommonServiceService
+    private commonService: CommonServiceService,
+    private router:Router
   ) {}
   userList: any;
 
@@ -19,6 +21,8 @@ export class EmployeeListComponent implements OnInit {
     this.showUsers();
   }
 
+
+  // show all Users
   showUsers() {
     setTimeout(() => {
       this.commonService.loadingSubject.next(true); 
@@ -35,6 +39,7 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  // block and unbloack user
   changeBlockStatus(userId: any) {
 
     setTimeout(() => {
@@ -52,5 +57,10 @@ export class EmployeeListComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  // show employee Full details
+  showFullDetails(id:any,name:any,number:any){
+    this.router.navigate(['/admin/employeeFull-Detail',id,name,number])
   }
 }

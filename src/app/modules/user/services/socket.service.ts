@@ -13,10 +13,11 @@ export class SocketService {
 
   constructor(private commonService:CommonServiceService) { }
 
-  connectWithSocket(emplyee:any){
+  connectWithSocket(emplyee:any,id:any){
         this.socket = io(environment.socketApi,{
           auth: {
             username: emplyee,
+            employeeId:id
           },
         });
 
@@ -29,6 +30,13 @@ export class SocketService {
 
 
         this.socket.on('checkOutnotification', (notification: any) => {
+          console.log('Notification received: ', notification);
+          this.commonService.notificationBooleanSubject.next(true)
+          notification.employeeName = emplyee
+          this.commonService.notificationMessage.next(notification)
+        });
+
+        this.socket.on('leaveApproval', (notification: any) => {
           console.log('Notification received: ', notification);
           this.commonService.notificationBooleanSubject.next(true)
           notification.employeeName = emplyee

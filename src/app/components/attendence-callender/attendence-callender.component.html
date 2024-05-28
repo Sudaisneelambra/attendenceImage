@@ -1,0 +1,17 @@
+<div class="w-full h-full bg-[#2e406e] flex flex-col justify-center  items-center">
+
+    <div class="  md:w-6/12 md:p-8 p-2 rounded-md gap-4">
+        <full-calendar [options]="calendarOptions" *ngIf="showCalendar" class="bg-[#ffffff] p-7 rounded-lg"></full-calendar>
+    </div>
+
+<div class="grid grid-cols-3 gap-3 py-5">
+
+    <h1 class="text-white rounded-lg overflow-hidden h-[60px] w-[60px] bg-[green] grid place-items-center text-[12px]">  Present</h1>
+    <h1 class="text-black rounded-lg overflow-hidden h-[60px] w-[60px] bg-[yellow] grid place-items-center text-[12px]">  Late </h1>
+    <h1 class="text-white rounded-lg overflow-hidden h-[60px] w-[60px] bg-[red] grid place-items-center text-[12px]">  Leave</h1>
+
+</div>
+    
+
+
+</div>

@@ -1,13 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonServiceService {
 
-  constructor( private router:Router) { }
+  constructor( private router:Router, private http:HttpClient) { }
 
   loadingSubject= new BehaviorSubject<boolean>(false)
   confirmBooleanSubject= new BehaviorSubject<boolean>(false)
@@ -23,7 +25,7 @@ export class CommonServiceService {
   errorMessage= new BehaviorSubject<string>('')
   notificationMessage= new BehaviorSubject<{}>({})
 
-
+  api= environment.api
 
   tockendecode() {
 
@@ -35,6 +37,11 @@ export class CommonServiceService {
     const base64 = base64Url.replace('-', '+').replace('_', '/');
 
     return JSON.parse(window.atob(base64));
+  }
+
+
+  getAttendence():Observable<any>{
+    return this.http.get(`${this.api}/getAttendence`)
   }
 
   logOut(){

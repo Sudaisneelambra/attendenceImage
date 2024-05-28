@@ -20,7 +20,9 @@ export class UserDashboardComponent implements OnInit {
   ngOnInit(): void {
     const token = this.commonService.tockendecode()
     const emplyeeName = token.name
-    this.socketService.connectWithSocket(emplyeeName);
+    const employeeId =token.employeeId
+    
+    this.socketService.connectWithSocket(emplyeeName,employeeId);
   }
 
   boolean() {
@@ -41,9 +43,13 @@ export class UserDashboardComponent implements OnInit {
     this.router.navigate(['/employee/leave-Application'])
   }
 
-  attendence() {
+  attendenceCalander() {
     this.one = true;
-    // this.router.navigate(['/admin/blocked-agency'])
+    this.router.navigate(['/employee/attendanceCalander'])
+  }
+  attendence(){
+    this.one = true;
+    this.router.navigate(['/employee/attendance'])
   }
 
   gotohome() {
@@ -57,8 +63,5 @@ export class UserDashboardComponent implements OnInit {
      }
   }
 
-  requests() {
-    // this.one=true
-    // this.router.navigate(['/admin/requests'])
-  }
+
 }

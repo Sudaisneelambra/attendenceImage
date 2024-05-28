@@ -38,6 +38,7 @@ export class EmployeeHomeComponent implements OnInit {
 
   // employee CheckIn
   checkIn() {
+    this.commonService.loadingSubject.next(true)
     this.startTime = Date.now();
     this.date = new Date();
     const dateString = this.date.toDateString();
@@ -52,6 +53,7 @@ export class EmployeeHomeComponent implements OnInit {
     this.employeeservice.checkIn(data).subscribe({
       next: (res) => {
         if (res.success) {
+          this.commonService.loadingSubject.next(false)
           this.checkInboolean = false;
           this.commonService.successBooleanSubject.next(true);
           this.commonService.successMessage.next('Success Fully Checkined');
@@ -62,6 +64,7 @@ export class EmployeeHomeComponent implements OnInit {
         }
       },
       error: (err) => {
+        this.commonService.loadingSubject.next(false)
         this.commonService.errorBooleanSubject.next(true);
         this.commonService.errorMessage.next(err.error.message);
       },
@@ -72,6 +75,7 @@ export class EmployeeHomeComponent implements OnInit {
 
   // employee CheckOut
   checkOut() {
+    this.commonService.loadingSubject.next(true)
     this.date = new Date();
     const dateString = this.date.toDateString();
 
@@ -84,6 +88,7 @@ export class EmployeeHomeComponent implements OnInit {
     this.employeeservice.checkOut(data).subscribe({
       next:(res) =>{
           if (res.success) {
+            this.commonService.loadingSubject.next(false)
             clearInterval(this.timerInterval);
             this.checkInboolean = true
             this.commonService.successBooleanSubject.next(true);
@@ -93,11 +98,13 @@ export class EmployeeHomeComponent implements OnInit {
             this.breakBoolean = true
 
           } else {
+            this.commonService.loadingSubject.next(false)
             this.commonService.errorBooleanSubject.next(true);
             this.commonService.errorMessage.next(res.message)
           }
       },
       error:(err)=>{
+          this.commonService.loadingSubject.next(false)
           this.commonService.errorBooleanSubject.next(true);
           this.commonService.errorMessage.next(err.error.message);
       }
@@ -146,6 +153,7 @@ export class EmployeeHomeComponent implements OnInit {
             this.workingTime = Date.now() - timeInmilli;
           }, 1000);
         } else {
+          this.checkInboolean = true;
           this.data = res.data;
         }
       },
@@ -158,6 +166,7 @@ export class EmployeeHomeComponent implements OnInit {
 
   // taking break
   takeBreak(){
+    this.commonService.loadingSubject.next(true)
     this.breakStart = Date.now();
     this.date = new Date();
     const dateString = this.date.toDateString();
@@ -170,6 +179,7 @@ export class EmployeeHomeComponent implements OnInit {
     this.employeeservice.takeBreak(data).subscribe({
       next:(res) =>{
         if(res.success){
+          this.commonService.loadingSubject.next(false)
           this.breakBoolean=false
           this.commonService.successBooleanSubject.next(true)
           this.commonService.successMessage.next(res.message)
@@ -177,11 +187,13 @@ export class EmployeeHomeComponent implements OnInit {
             this.breakTime = Date.now() - this.breakStart;
           }, 1000);
         } else {
+          this.commonService.loadingSubject.next(false)
           this.commonService.errorBooleanSubject.next(true)
           this.commonService.errorMessage.next(res.message)
         }
       },
       error:(err)=>{
+        this.commonService.loadingSubject.next(false)
         this.commonService.errorBooleanSubject.next(true)
         this.commonService.errorMessage.next(err.error.message)
       }
@@ -195,12 +207,10 @@ export class EmployeeHomeComponent implements OnInit {
   checkBreak(){
     this.employeeservice.checkBreak(this.date, this.employeeId).subscribe({
       next:(res)=>{
-        console.log(res);
         
         if(res.success){
           this.breakBoolean=false
           const data = res.data?.break?.[res.data?.break?.length-1]
-          console.log(res.data?.break?.[res.data?.break?.length-1]);
           
           const [datePart, timePart] = data?.breakStart.split(', ');
           const [month, day, year] = datePart.split('/');
@@ -229,7 +239,9 @@ export class EmployeeHomeComponent implements OnInit {
   }
 
 
+  // previous break check end
   breakEnd(){
+    this.commonService.loadingSubject.next(true)
     this.date = new Date();
     const dateString = this.date.toDateString();
 
@@ -242,16 +254,19 @@ export class EmployeeHomeComponent implements OnInit {
     this.employeeservice.breakEnd(data).subscribe({
       next:(res) =>{
           if (res.success) {
+            this.commonService.loadingSubject.next(false)
             clearInterval(this.breakTimerInterval);
             this.breakBoolean = true
             this.commonService.successBooleanSubject.next(true);
             this.commonService.successMessage.next(res?.message);
           } else {
+            this.commonService.loadingSubject.next(false)
             this.commonService.errorBooleanSubject.next(true);
             this.commonService.errorMessage.next(res.message)
           }
       },
       error:(err)=>{
+          this.commonService.loadingSubject.next(false)
           this.commonService.errorBooleanSubject.next(true);
           this.commonService.errorMessage.next(err.error.message);
       }

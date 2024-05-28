@@ -24,6 +24,7 @@ export class EmplyeeAddComponent {
     this.initForm();
   }
 
+  // form initialize
   initForm() {
     this.addEmplyeeForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -34,7 +35,7 @@ export class EmplyeeAddComponent {
 
 
 
-
+// employee add
   onSubmit() {
       if (this.addEmplyeeForm.valid) {
             this.commonService.confirmBooleanSubject.next(true)

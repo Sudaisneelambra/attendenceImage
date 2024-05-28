@@ -1,0 +1,36 @@
+
+<table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>CheckIn</th>
+        <th>CheckOut</th>
+        <th>Worked Hours</th>
+        <th>Break Taken</th>
+        <th>Break Hours</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dt of data">
+        <td>{{dt?.date}}</td>
+        <td>{{timesplice(dt?.checkIn)}}</td>
+        <td>{{timesplice(dt?.checkOut)}}</td>
+        <td>{{dt?.workingHours ? dt?.workingHours : 'No Check Out' }}</td>
+        <td>{{dt?.break?.length}} times</td>
+        <td>
+            <ul *ngIf="dt?.break?.length ; else noBreaks" >
+              <li *ngFor="let brk of dt.break; let i=index">
+                <span class="font-bold">Start</span>: {{ timesplice(brk.breakStart)  }} <br> <span class="font-bold">End</span>: {{ timesplice(brk.breakEnd)   }} <br> <span class="font-bold">Duration</span>: {{ brk.duration }}
+                <hr class="h-[2px] bg-black">
+              </li>
+            </ul>
+            <ng-template #noBreaks>
+                <h1 class="text-center">No Breaks</h1>
+            </ng-template>
+          </td>
+        <td>{{dt?.status ? dt?.status : 'not completted'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

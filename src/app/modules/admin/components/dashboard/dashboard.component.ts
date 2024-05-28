@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocketService } from 'src/app/modules/user/services/socket.service';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 
 @Component({
@@ -7,11 +8,19 @@ import { CommonServiceService } from 'src/app/services/common-service.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit{
 
   one=true
 
-  constructor(private router:Router,private commonService:CommonServiceService){}
+  constructor(private router:Router,private commonService:CommonServiceService ,private socketService:SocketService){}
+
+  ngOnInit(): void {
+    const token = this.commonService.tockendecode()
+    const emplyeeName = token.name
+    const employeeId =token.employeeId
+    
+    this.socketService.connectWithSocket(emplyeeName,employeeId);
+  }
 
 boolean(){
   if(this.one){
@@ -40,12 +49,12 @@ getAllEmployees(){
 
 leaveRequest(){
   this.one=true
-  // this.router.navigate(['/admin/blocked-agency'])
+  this.router.navigate(['/admin/all-Leave-Requests'])
 }
 
 attendence(){
   this.one=true
-  // this.router.navigate(['/admin/blocked-user'])
+  this.router.navigate(['/admin/admin-attendence'])
 }
 
 gotohome(){
@@ -59,8 +68,4 @@ logout(){
  }
 }
 
-requests(){
-  // this.one=true
-  // this.router.navigate(['/admin/requests'])
-}
 }
