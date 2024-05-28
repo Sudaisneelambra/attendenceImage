@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { gotloginGuard } from './guards/gotlogin.guard';
 import { goadminhomeGuard } from './guards/goadminhome.guard';
 import { goemployeehomeGuard } from './guards/goemployeehome.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', canActivate:[gotloginGuard], component: LoginComponent },
@@ -19,6 +20,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/employee.module').then((m) => m.UserModule),
   },
+  {
+    path:'**',
+    component:NotFoundComponent
+  }
 ];
 
 @NgModule({

@@ -15,12 +15,14 @@ import { CommonInterceptor } from './common.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttendenceCallenderComponent } from './components/attendence-callender/attendence-callender.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AttendenceCallenderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
