@@ -39,5 +39,14 @@ export class AppComponent implements OnInit{
       this.commonService.notificationBooleanSubject.subscribe((val)=>{
         this.notificationBoolean = val
       })
+
+      alert(`dear user
+      Admin Can only add the user and the user Login credentials send into users email.the user can login with that credential. If you want to explore it U can login as a admin and add your details login with that....
+      
+      ADMIN Credential :
+      email:- sudaisanuneelambra21@gmail.com,
+      PASSWORD :- SUDA9747   
+      
+      use this for login`)
   }
 }
